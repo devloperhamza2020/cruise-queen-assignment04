@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curise Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1>Cruise Queen</h1>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book./p>
+        </div>
+
+
+        <div class="booking-form">
+            <h3>Book Ocean Time</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="">First Class: $150 ( <span id="fist-class-total">$00</span> )</label>
+                    <input id="first-cruise-count" class="inp-style inp-width" type="text" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <p id="first-cruise-increase" class="plus-btn">+</p>
+                    <p id="first-cruise-decrease" class="minus-btn">-</p>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="">Economy: $100 ( <span id="economy-cruise-total">$00</span> )</label>
+                    <input id="economy-cruise-count" class="inp-style inp-width" type="text" name="" value="0">
+                </div>
+                <div class="plus-minus-btn">
+                    <p id="economy-cruise-increase" class="plus-btn">+</p>
+                    <p id="economy-cruise-decrease" class="minus-btn">-</p>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="subtotal-price" class="subtotal-text-color">$00</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="tax-amount" class="vat-text-color">$00</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="intotal" class="total-text-color">$00</p>
+                    </div>
+                </div>
+            </div>
+            <button id="book-instant" class="btn-style"  onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Book Now</button>
+        </div>
+    </main>
+
+    <div id="id01" class="w3-modal">
+        <div class="w3-modal-content">
+          <header class="w3-container w3-teal"> 
+            <span onclick="document.getElementById('id01').style.display='none'" 
+            class="w3-button w3-display-topright">&times;</span>
+            <h2>Modal Header</h2>
+          </header>
+          <div class="w3-container">
+            <h1>You are SuccessFully Done your booking</h1>
+            <h4>Thanks for Visiting with us</h4>
+          </div>
+          <footer class="w3-container w3-teal">
+              <h2>See you latter</h2>
+          </footer>
+        </div>
+      </div>
+    <!--Thank You-->
+<!-- JavaScript Code From Here -->
+    <script>
+
+// First class coding is Start from here
+
+        // This is for First Class increase
+        document.getElementById("first-cruise-increase").addEventListener("click", function(){
+            handleFirstClassChange(true);
+            // const cruiseInput = document.getElementById("first-cruise-count");
+            // const firstCruiseCount = parseInt(cruiseInput.value);
+            // const cruiseNewCount = firstCruiseCount + 1;
+            // cruiseInput.value = cruiseNewCount;
+            // const cruiseTotal = cruiseNewCount * 150;
+            // document.getElementById("fist-class-total").innerText= "$" + cruiseTotal;
+        })
+
+        // This is for First Class decrease
+        document.getElementById("first-cruise-decrease").addEventListener("click", function(){
+            handleFirstClassChange(false);
+            // const cruiseInput = document.getElementById("first-cruise-count");
+            // const firstCruiseCount = parseInt(cruiseInput.value);
+            // const cruiseNewCount = firstCruiseCount - 1;
+            // cruiseInput.value = cruiseNewCount;
+            // const cruiseTotal = cruiseNewCount * 150;
+            // document.getElementById("fist-class-total").innerText= "$" + cruiseTotal;
+        })
+
+        // This function is for First class
+        function handleFirstClassChange(isIncrease) {
+            const cruiseInput = document.getElementById("first-cruise-count");
+            const firstCruiseCount = parseInt(cruiseInput.value);
+             //const cruiseNewCount = firstCruiseCount - 1;
+            let cruiseNewCount = firstCruiseCount;
+            if (isIncrease == true) {
+                 cruiseNewCount = firstCruiseCount +1;
+                }
+            if (isIncrease == false && firstCruiseCount > 0) {
+                 cruiseNewCount = firstCruiseCount - 1;
+                }
+            cruiseInput.value = cruiseNewCount;
+                const cruiseTotal = cruiseNewCount * 150;
+            document.getElementById("fist-class-total").innerText = "$" + cruiseTotal;
+            calculationOfTotal()
+        }
+// First class coding is END from here
+
+
+
+// Economy class coding is Start from here
+
+        // This is for Economy Class increase
+        document.getElementById("economy-cruise-increase").addEventListener("click", function(){
+            handleEconomyClassChange(true);
+            // const economyCruiseInput = document.getElementById("economy-cruise-count");
+            // const economyCruiseCount = parseInt(economyCruiseInput.value);
+            // const economyCruiseNewCount = economyCruiseCount + 1;
+            // economyCruiseInput.value = economyCruiseNewCount;
+            // const economyCruiseTotal = economyCruiseNewCount * 100;
+            // document.getElementById("economy-cruise-total").innerText= "$" + economyCruiseTotal;
+        })
+
+         // This is for Economy Class decrease
+        document.getElementById("economy-cruise-decrease").addEventListener("click", function(){
+            handleEconomyClassChange(false);
+            // const economyCruiseInput = document.getElementById("economy-cruise-count");
+            // const economyCruiseCount = parseInt(economyCruiseInput.value);
+            // const economyCruiseNewCount = economyCruiseCount - 1;
+            // economyCruiseInput.value = economyCruiseNewCount;
+            // const economyCruiseTotal = economyCruiseNewCount * 100;
+            // document.getElementById("economy-cruise-total").innerText= "$" + economyCruiseTotal;
+        })
+
+        // This function is for Economy class
+        function handleEconomyClassChange(isIncrease) {
+             const economyCruiseInput = document.getElementById("economy-cruise-count");
+            const economyCruiseCount = parseInt(economyCruiseInput.value);
+            //const economyCruiseNewCount = economyCruiseCount - 1;
+            let economyCruiseNewCount = economyCruiseCount;
+            if (isIncrease == true) {
+                economyCruiseNewCount = economyCruiseCount +1;
+                }
+            if (isIncrease == false && economyCruiseCount > 0) {
+                economyCruiseNewCount = economyCruiseCount - 1;
+                }
+                economyCruiseInput.value = economyCruiseNewCount;
+                const economyCruiseTotal = economyCruiseNewCount * 100;
+            document.getElementById("economy-cruise-total").innerText = "$" + economyCruiseTotal;
+            calculationOfTotal();
+        }
+// Economy class coding is END here
+
+
+        // This is for Calculate Sub-total & Total
+        function calculationOfTotal() {
+            const cruiseInput = document.getElementById("first-cruise-count");
+            const firstCruiseCount = parseInt(cruiseInput.value);
+
+            const economyCruiseInput = document.getElementById("economy-cruise-count");
+            const economyCruiseCount = parseInt(economyCruiseInput.value);
+
+            const totalPrice = firstCruiseCount*150 + economyCruiseCount*100;
+            document.getElementById("subtotal-price").innerText = "$" + totalPrice;
+
+            // This Step for Tax
+            const governmentTax = Math.round(totalPrice * 0.05);
+            document.getElementById("tax-amount").innerText = "$" + governmentTax;
+
+            // Thsis Step for Grand-Total
+            const inTotal = totalPrice + governmentTax;
+            document.getElementById("intotal").innerText = "$" + inTotal;
+        }
+    </script>
+</body>
+
+</html>
